@@ -1,0 +1,73 @@
+{
+  "kind": "build_request",
+  "title": "Fix 'Unable to load products' error on Catalog page",
+  "projectName": "Maa Gayatri Stationers",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Fix the product fetching logic in useQueries.ts so that the `useProducts` hook successfully retrieves products from the backend actor without throwing an error. The catalog page currently shows 'Unable to load products – Something went wrong while fetching the catalogue' on every load.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "This problem is showing",
+          "Unable to load products"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The catalog page loads and displays the product grid without showing the error state.",
+        "The 'Unable to load products' error message is no longer visible on initial page load.",
+        "Products fetched from the backend actor are rendered in CatalogPage.tsx correctly."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Ensure the backend `getProducts` (or equivalent) query function in backend/main.mo returns product data in a format compatible with what the frontend useQueries.ts hook expects, fixing any type mismatch or missing fields that could cause the fetch to fail.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Unable to load products",
+          "Something went wrong while fetching the catalogue"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The backend actor exposes a stable query for retrieving all products.",
+        "The returned product records include all fields (id, name, description, price, category, stock, imageUrl) that the frontend expects.",
+        "Calling the query from the frontend does not result in a decode or type error."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Ensure the auto-seed logic in CatalogPage.tsx correctly triggers seed product data when no products are found, so the catalog is never empty on first load after the fetch error is resolved.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ]
+      },
+      "acceptanceCriteria": [
+        "When the product list is empty after a successful fetch, seed products are automatically inserted.",
+        "After seeding, the catalog page displays the seeded products without requiring a manual page refresh."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not change the overall visual design or color theme of the app.",
+    "Do not modify files listed in frontend.immutablePaths."
+  ],
+  "nonGoals": [
+    "Redesigning the catalog page UI.",
+    "Adding new product categories or fields.",
+    "Changing the checkout or admin orders pages."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-24T19:39:20.567Z",
+  "summary": "The diff addresses all three requirements. REQ-1 is handled by rewriting useQueries.ts with a working useAllProducts hook. REQ-2 is addressed by updating backend/main.mo with a getProducts query returning product records. REQ-3 is handled in CatalogPage.tsx with auto-seed logic using a ref to prevent duplicate calls. However, there is a potential mismatch: useQueries.ts calls actor.getAllProducts() while backend/main.mo defines the function as getProducts(), which could still cause a fetch error. The backend Product type also uses stockQuantity rather than stock, which may cause a field mismatch with frontend expectations.",
+  "missing_requirements": [
+    {
+      "id": "REQ-2",
+      "requirement": "The returned product records include all fields the frontend expects and calling the query does not result in a decode or type error.",
+      "reason": "The backend defines the query as getProducts() but useQueries.ts calls actor.getAllProducts(), creating a name mismatch that would still cause fetch failures. Additionally the backend uses stockQuantity while the frontend may expect stock.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "A backend/migration.mo module was added with a migration runner function integrated into main.mo.",
+      "reason": "The build request does not mention any database migration or canister upgrade mechanism. This was not requested in any requirement.",
+      "evidence": [
+        "backend/migration.mo",
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "confidence": 0.72,
+  "changed_files": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "frontend-file-summaries.txt",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/CatalogPage.tsx",
+    "project_state.json"
+  ]
+}

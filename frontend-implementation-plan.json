@@ -1,0 +1,48 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fix 'Unable to load products' error on Catalog page",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Fix the product fetching logic in useQueries.ts so that the useProducts hook successfully retrieves products from the backend actor without throwing an error",
+      "acceptanceCriteria": [
+        "The catalog page loads and displays the product grid without showing the error state.",
+        "The 'Unable to load products' error message is no longer visible on initial page load.",
+        "Products fetched from the backend actor are rendered in CatalogPage.tsx correctly."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Fix the useProducts hook to properly handle the backend actor's getAllProducts() method. Ensure proper error handling, async/await syntax, and type mapping from the backend Product interface to the frontend representation. Add defensive null checks and ensure the query is properly configured with error boundaries."
+        },
+        {
+          "path": "frontend/src/pages/CatalogPage.tsx",
+          "operation": "modify",
+          "description": "Review and adjust the error handling logic to ensure that fetch errors are properly caught and displayed. Verify that the useProducts hook is called correctly and that the component handles loading, error, and success states appropriately. Ensure the retry mechanism works with the fixed useProducts hook."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Ensure the auto-seed logic in CatalogPage.tsx correctly triggers seed product data when no products are found",
+      "acceptanceCriteria": [
+        "When the product list is empty after a successful fetch, seed products are automatically inserted.",
+        "After seeding, the catalog page displays the seeded products without requiring a manual page refresh."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/CatalogPage.tsx",
+          "operation": "modify",
+          "description": "Fix the auto-seed logic to properly detect when products array is empty (after a successful fetch, not during error state) and trigger the seedProducts mutation. Ensure the mutation's onSuccess callback properly invalidates the products query so that the newly seeded products are fetched and displayed automatically without requiring a manual page refresh."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Ensure the useSeedProducts mutation hook properly calls the backend actor's seedProducts() method and includes proper query invalidation in its onSuccess callback to trigger a refetch of the products list after seeding completes."
+        }
+      ]
+    }
+  ]
+}

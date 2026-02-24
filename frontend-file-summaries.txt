@@ -1,0 +1,16 @@
+{
+  "frontend/src/index.css": "Global stylesheet with saffron-cream-maroon OKLCH color palette, Playfair Display heading font, Lato body font, and parchment background texture applied to body.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with custom saffron/maroon/cream color scales, Playfair Display heading font, Lato body font, and warm shadow utilities.",
+  "frontend/src/contexts/CartContext.tsx": "React context and reducer-based cart state management with add, remove, update quantity, clear, and computed totals (items count and total amount in paise).",
+  "frontend/src/hooks/useQueries.ts": "All React Query hooks for backend integration; reduced retry count to 1 with a 2-second delay, throws errors instead of returning empty arrays when actor is unavailable, and ensures proper query invalidation after seeding.",
+  "frontend/src/components/Layout.tsx": "Shell layout component wrapping all pages with Header, Footer, and TanStack Router Outlet for consistent page structure.",
+  "frontend/src/components/Header.tsx": "Sticky header with shop logo, \"Maa Gayatri Stationers\" branding, navigation links, cart icon with item count badge, and mobile hamburger menu.",
+  "frontend/src/components/CartDrawer.tsx": "Sheet-based cart sidebar showing all cart items with quantity controls, per-item subtotals, grand total, and checkout navigation button.",
+  "frontend/src/components/ProductCard.tsx": "Product card displaying image, name, description, price in ₹, stock status badge, and Add to Cart button (disabled when out of stock).",
+  "frontend/src/components/Footer.tsx": "Footer with shop branding, quick links, contact info, copyright year, and caffeine.ai attribution with UTM tracking.",
+  "frontend/src/pages/CatalogPage.tsx": "Main catalog page with hero banner, category tabs, product grid, skeleton loading, auto-seed on empty catalog using a ref to prevent duplicate seed calls, and an ErrorState component with a retry button.",
+  "frontend/src/pages/CheckoutPage.tsx": "Checkout page with order summary, validated customer details form (name, phone, address), order placement mutation, and inline order confirmation screen.",
+  "frontend/src/components/OrderRow.tsx": "Collapsible order row showing order ID, customer info, status badge, delivery address, item details, and a status update dropdown.",
+  "frontend/src/pages/AdminOrdersPage.tsx": "Admin orders page listing all orders in reverse-chronological order with status summary stats, refresh button, and OrderRow components.",
+  "frontend/src/App.tsx": "Root app with TanStack Router setup, CartProvider and Toaster wrapping all routes (/, /checkout, /admin/orders) via a shared Layout."
+}

@@ -1,0 +1,43 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-fix-the-product-fetching-logic-in-usequeries-ts-so-that-the-useproducts-hook-successfully-retrieves-products-from-the-backend-actor-without-throwing-an-error-the-catalog-page-currently-shows-unable-to-load-products-something-went-wrong-while-fetching-the-catalogue-on-every-load",
+      "featureTitle": "Fix the product fetching logic in useQueries.ts so that the `useProducts` hook successfully retrieves products from the backend actor without throwing an error. The catalog page currently shows 'Unable to load products – Something went wrong while fetching the catalogue' on every load.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/CatalogPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-auto-seed-logic-in-catalogpage-tsx-correctly-triggers-seed-product-data-when-no-products-are-found-so-the-catalog-is-never-empty-on-first-load-after-the-fetch-error-is-resolved",
+      "featureTitle": "Ensure the auto-seed logic in CatalogPage.tsx correctly triggers seed product data when no products are found, so the catalog is never empty on first load after the fetch error is resolved.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/CatalogPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

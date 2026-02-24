@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "New project",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-fix-the-product-fetching-logic-in-usequeries-ts-so-that-the-useproducts-hook-successfully-retrieves-products-from-the-backend-actor-without-throwing-an-error-the-catalog-page-currently-shows-unable-to-load-products-something-went-wrong-while-fetching-the-catalogue-on-every-load",
+      "title": "Fix the product fetching logic in useQueries.ts so that the `useProducts` hook successfully retrieves products from the backend actor without throwing an error. The catalog page currently shows 'Unable to load products – Something went wrong while fetching the catalogue' on every load.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-auto-seed-logic-in-catalogpage-tsx-correctly-triggers-seed-product-data-when-no-products-are-found-so-the-catalog-is-never-empty-on-first-load-after-the-fetch-error-is-resolved",
+      "title": "Ensure the auto-seed logic in CatalogPage.tsx correctly triggers seed product data when no products are found, so the catalog is never empty on first load after the fetch error is resolved.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-2",
+      "summary": "Ensure the backend `getProducts` (or equivalent) query function in backend/main.mo returns product data in a format compatible with what the frontend useQueries.ts hook expects, fixing any type mismatch or missing fields that could cause the fetch to fail.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Maa Gayatri Stationers",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
